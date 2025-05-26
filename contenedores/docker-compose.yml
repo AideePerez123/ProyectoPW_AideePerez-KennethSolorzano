@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: hotel_paraiso-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: aidee
+      MYSQL_DATABASE: Hotel_Paraiso
+      MYSQL_USER: hoteluser
+      MYSQL_PASSWORD: aidee
+    ports:
+      - "3308:3306"   # Acceso remoto a la BD
+    volumes:
+      - ../DB-Hotel:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
+    networks:
+      - hotel-network
+    command:
+      - --bind-address=0.0.0.0  # Permite conexiones remotas
+
+  php-dark:
+    build:
+      context: ../sitio_negro
+    container_name: hotel-web-sitio-negro
+    ports:
+      - "8080:80"
+    volumes:
+      - ../sitio_negro:/var/www/html
+    depends_on:
+      - mysql-db
+    networks:
+      - hotel-network
+
+  php-light:
+    build:
+      context: ../sitio_blanco
+    container_name: hotel-web-sitio-blanco
+    ports:
+      - "8081:80"
+    volumes:
+      - ../sitio_blanco:/var/www/html
+    depends_on:
+      - mysql-db
+    networks:
+      - hotel-network
+
+volumes:
+  mysql_data:
+
+networks:
+  hotel-network:
+    driver: bridge
