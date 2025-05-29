@@ -85,7 +85,6 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="../public/index.php">
@@ -111,12 +110,10 @@ if (!isset($_SESSION['loggedin'])) {
     </div>
 </nav>
 
-<!-- Contenido Principal -->
 <div class="container py-5">
     <h2 class="text-center mb-5 fw-bold text-dark">Estado de Habitaciones</h2>
     <div class="row g-4 justify-content-center">
         <?php
-        // Datos simulados para fase 1
         $habitaciones = [
             ['id' => 1, 'estado' => 'ocupada', 'cliente' => 'Juan Pérez', 'total' => 1050.00],
             ['id' => 2, 'estado' => 'disponible', 'cliente' => '', 'total' => 0],
@@ -149,12 +146,10 @@ if (!isset($_SESSION['loggedin'])) {
     </div>
 </div>
 
-<!-- Footer -->
 <footer class="footer">
     &copy; 2025 Hotel Vacacional El Paraíso 
 </footer>
 
-<!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap @5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -20,7 +20,6 @@ if (file_exists($imagePath)) {
     <link href="public/css/estilos.css" rel="stylesheet">
 </head>
 <body style="background-color: #1e1e1e; color: #e6e6e6;">
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
@@ -43,7 +42,7 @@ if (file_exists($imagePath)) {
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    
     <div class="hero text-center d-flex align-items-center justify-content-center py-5" style="background: url(imagenes/fondo.png) no-repeat center center / cover; height: 400px;">
         <div>
             <h1>Bienvenidos a Hotel El Paraíso</h1>
@@ -51,7 +50,6 @@ if (file_exists($imagePath)) {
         </div>
     </div>
 
-    <!-- Reserva Pública -->
     <div class="container my-5">
         <h2 class="text-center mb-4">Realiza tu Reserva</h2>
         <div class="row justify-content-center">

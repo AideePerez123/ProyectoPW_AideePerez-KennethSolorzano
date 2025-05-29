@@ -9,7 +9,7 @@ include 'config.php';
 
 $id_habitacion = isset($_GET['habitacion']) ? intval($_GET['habitacion']) : 0;
 
-// Validar que la habitación exista
+// para veri si existe un habitacion 
 $stmt = $pdo->prepare("SELECT * FROM habitacion WHERE id_habitacion = ?");
 $stmt->execute([$id_habitacion]);
 $habitacion = $stmt->fetch();

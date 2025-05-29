@@ -32,7 +32,7 @@ error_reporting(E_ALL);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         window.onload = function() {
-            // Obtener parámetros GET de la URL
+            // Obtener el get con url
             const urlParams = new URLSearchParams(window.location.search);
             const reservationData = {
                 name: urlParams.get('name') || '',
@@ -42,13 +42,12 @@ error_reporting(E_ALL);
                 checkOut: urlParams.get('checkOut') || ''
             };
 
-            // Validar que todos los datos necesarios estén presentes
             if (!reservationData.name || !reservationData.nit || !reservationData.checkIn || !reservationData.checkOut) {
                 document.getElementById('reservationMessage').innerHTML = '<div class="alert alert-danger">Faltan datos para procesar la reserva.</div>';
                 return;
             }
 
-            // Enviar solicitud al servidor
+            
             fetch('./procesar_reserva.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
