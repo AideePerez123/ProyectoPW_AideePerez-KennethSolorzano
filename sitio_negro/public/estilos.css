@@ -1,0 +1,100 @@
+
+body {
+    font-size: 1.1rem;
+    color: #e6e6e6;
+    background-color: #1e1e1e;
+}
+
+h1, h2 {
+    color: #ffffff;
+}
+
+.form-control {
+    font-size: 1.1rem;
+    padding: 0.75rem;
+    border: 2px solid #444;
+    background-color: #1e1e1e;
+    color: #e6e6e6;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.date-input {
+    font-size: 1.1rem;
+    padding: 0.75rem;
+    width: 100%;
+    background-color: #1e1e1e;
+    border: 2px solid #444;
+    color: #e6e6e6;
+    border-radius: 0.25rem;
+}
+
+.btn-primary {
+    background-color: #6c63ff;
+    border-color: #6c63ff;
+    font-size: 1.1rem;
+    padding: 0.75rem;
+}
+
+.btn-primary:hover {
+    background-color: #574fd6;
+    border-color: #574fd6;
+}
+
+.alert {
+    font-size: 1.1rem;
+    background-color: #333;
+    color: #e6e6e6;
+    border: none;
+}
+
+.card {
+    border: none;
+    background-color: #1e1e1e;
+    color: #090909;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.room-available {
+    background-color: #1e1e1e;
+    border-left: 6px solid #28a745;
+}
+
+.room-occupied {
+    background-color: #2a2a3d;
+    border-left: 6px solid #dc3545;
+}
+
+.room-card {
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-status {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    cursor: default;
+}
+
+.footer {
+    margin-top: 4rem;
+    padding: 1rem 0;
+    text-align: center;
+    color: #777;
+    font-size: 0.95rem;
+    background-color: #2a2a2a;
+}
