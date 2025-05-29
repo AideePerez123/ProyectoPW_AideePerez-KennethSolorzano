@@ -143,13 +143,6 @@ if (!isset($_SESSION['loggedin'])) {
                                 <p><strong>Total:</strong> Q.<?= number_format($hab['total'], 2); ?></p>
                             <?php endif; ?>
                         </div>
-                        <div class="mt-auto">
-                            <?php if ($hab['estado'] === 'ocupada'): ?>
-                                <a href="detalle_reserva.php?id=<?= $hab['id']; ?>" class="btn btn-sm btn-outline-primary w-100">Ver Detalles</a>
-                            <?php else: ?>
-                                <a href="nueva_reserva.php?habitacion=<?= $hab['id']; ?>" class="btn btn-sm btn-success w-100">Asignar</a>
-                            <?php endif; ?>
-                        </div>
                     </div>
                 </div>
             </div>
