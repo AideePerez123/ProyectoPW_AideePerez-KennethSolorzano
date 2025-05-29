@@ -1,12 +1,28 @@
-
 body {
     font-size: 1.1rem;
     color: #e6e6e6;
-    background-color: #1e1e1e;
+    background-color: #121212;
 }
 
 h1, h2 {
     color: #ffffff;
+}
+
+.navbar-brand img {
+    max-height: 40px;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+    color: #e6e6e6 !important;
+}
+
+.navbar-dark .nav-link:hover {
+    color: #ffffff !important;
+}
+
+.navbar-dark {
+    background-color: #1e1e1e !important;
 }
 
 .form-control {
@@ -54,40 +70,26 @@ h1, h2 {
 .card {
     border: none;
     background-color: #1e1e1e;
-    color: #090909;
+    color: #0f0f0f;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
 
-.room-available {
-    background-color: #1e1e1e;
-    border-left: 6px solid #28a745;
+.room-preview {
+    background: url('imagenes/fondo_oscuro.jpg') no-repeat center center;
+    background-size: cover;
+    height: 300px;
+    margin-top: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
-.room-occupied {
-    background-color: #2a2a3d;
-    border-left: 6px solid #dc3545;
-}
-
-.room-card {
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem;
-}
-
-.room-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-}
-
-.btn-status {
-    font-size: 0.85rem;
-    padding: 0.3rem 0.6rem;
-    cursor: default;
+.confirmation-card {
+    background: url('imagenes/reserva_confirmacion_oscuro.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 300px;
+    padding: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 .footer {
@@ -96,5 +98,5 @@ h1, h2 {
     text-align: center;
     color: #777;
     font-size: 0.95rem;
-    background-color: #2a2a2a;
+    background-color: #1e1e1e;
 }
