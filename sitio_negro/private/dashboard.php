@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: ../public/login.php');
+if (!isset($_SESSION['loggedin'])) {
+    header("Location: ../login.php");
     exit;
 }
 ?>
@@ -102,10 +102,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <a class="nav-link" href="../index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../reservas.php">Reservas</a>
+                    <a class="nav-link" href="../public/reservas.php">Reservas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../logout.php">Cerrar Sesión</a>
+                    <a class="nav-link" href="../public/logout.php">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -141,13 +141,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             <?php if ($hab['estado'] === 'ocupada'): ?>
                                 <p class="mb-1"><strong>Huésped:</strong><br><?= htmlspecialchars($hab['cliente']); ?></p>
                                 <p><strong>Total:</strong> Q.<?= number_format($hab['total'], 2); ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <div class="mt-auto">
-                            <?php if ($hab['estado'] === 'ocupada'): ?>
-                                <a href="detalle_reserva.php?id=<?= $hab['id']; ?>" class="btn btn-sm btn-outline-primary w-100">Ver Detalles</a>
-                            <?php else: ?>
-                                <a href="nueva_reserva.php?habitacion=<?= $hab['id']; ?>" class="btn btn-sm btn-success w-100">Asignar</a>
                             <?php endif; ?>
                         </div>
                     </div>

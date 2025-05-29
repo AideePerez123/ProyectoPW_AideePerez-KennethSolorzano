@@ -2,7 +2,7 @@
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-$imagePath = __DIR__ . '/../imagenes/fondo.png';
+$imagePath = __DIR__ . '/imagenes/fondo.png';
 if (file_exists($imagePath)) {
     echo "<!-- Debug: fondo.png exists -->";
 } else {
@@ -22,7 +22,7 @@ if (file_exists($imagePath)) {
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="../imagenes/logo.png" alt="Hotel El Paraíso" style="height: 40px;">
+                <img src="/imagenes/logo.png" alt="Hotel El Paraíso" style="height: 40px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

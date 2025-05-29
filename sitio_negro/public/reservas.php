@@ -2,12 +2,6 @@
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-$imagePath = __DIR__ . '/../imagenes/reserva_confirmacion.png';
-if (file_exists($imagePath)) {
-    echo "<!-- Debug: reserva_confirmacion.png exists -->";
-} else {
-    echo "<!-- Debug: reserva_confirmacion.png does NOT exist at $imagePath -->";
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,21 +32,34 @@ if (file_exists($imagePath)) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         window.onload = function() {
+            // Obtener parámetros GET de la URL
             const urlParams = new URLSearchParams(window.location.search);
             const reservationData = {
-                name: urlParams.get('name'),
-                nit: urlParams.get('nit'),
-                birthDate: urlParams.get('birthDate'),
-                checkIn: urlParams.get('checkIn'),
-                checkOut: urlParams.get('checkOut')
+                name: urlParams.get('name') || '',
+                nit: urlParams.get('nit') || '',
+                birthDate: urlParams.get('birthDate') || '',
+                checkIn: urlParams.get('checkIn') || '',
+                checkOut: urlParams.get('checkOut') || ''
             };
 
-            fetch('reserve_process.php', {
+            // Validar que todos los datos necesarios estén presentes
+            if (!reservationData.name || !reservationData.nit || !reservationData.checkIn || !reservationData.checkOut) {
+                document.getElementById('reservationMessage').innerHTML = '<div class="alert alert-danger">Faltan datos para procesar la reserva.</div>';
+                return;
+            }
+
+            // Enviar solicitud al servidor
+            fetch('./procesar_reserva.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(reservationData)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor: ' + response.status);
+                }
+                return response.json();
+            })
             .then(data => {
                 const reservationDetails = document.getElementById('reservationDetails');
                 const reservationMessage = document.getElementById('reservationMessage');
@@ -64,14 +71,14 @@ if (file_exists($imagePath)) {
                         <p><strong>Fecha de Salida:</strong> ${reservationData.checkOut}</p>
                         <p><strong>Habitación Asignada:</strong> ${data.room}</p>
                     `;
-                    reservationMessage.innerHTML = '<div class="alert alert-success">Reserva confirmada exitosamente.</div>';
+                    reservationMessage.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
                 } else {
-                    reservationMessage.innerHTML = '<div class="alert alert-danger">Error al procesar la reserva: ' + (data.message || 'Intente nuevamente.') + '</div>';
+                    reservationMessage.innerHTML = `<div class="alert alert-danger">Error al procesar la reserva: ${data.message}</div>`;
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('reservationMessage').innerHTML = '<div class="alert alert-danger">Error al conectar con el servidor. Por favor, intente nuevamente.</div>';
+                document.getElementById('reservationMessage').innerHTML = `<div class="alert alert-danger">Error al procesar la solicitud: ${error.message}. Por favor, intente nuevamente.</div>`;
             });
         };
     </script>

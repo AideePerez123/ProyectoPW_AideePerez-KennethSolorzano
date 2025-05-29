@@ -61,8 +61,8 @@ function validar_fechas_reserva($fecha_ingreso, $fecha_salida) {
 // para verificar disponibilidad de habitación en fechas dadas
 function habitacion_disponible($pdo, $id_habitacion, $fecha_ingreso, $fecha_salida) {
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM reserva 
-                           WHERE id_habitacion = ? 
-                           AND NOT (fecha_salida <= ? OR fecha_ingreso >= ?)");
+                        WHERE id_habitacion = ? 
+                        AND NOT (fecha_salida <= ? OR fecha_ingreso >= ?)");
     $stmt->execute([$id_habitacion, $fecha_salida, $fecha_ingreso]);
     return $stmt->fetchColumn() == 0;
 }
@@ -84,14 +84,14 @@ function obtener_habitaciones_disponibles($pdo, $fecha_ingreso, $fecha_salida) {
 // para egistrar nueva reserva
 function registrar_reserva($pdo, $id_cliente, $id_habitacion, $id_empleado, $fecha_ingreso, $fecha_salida) {
     $stmt = $pdo->prepare("INSERT INTO reserva (fecha_ingreso, fecha_salida, estado, id_cliente, id_habitacion, id_empleado)
-                           VALUES (?, ?, 'confirmada', ?, ?, ?)");
+                        VALUES (?, ?, 'confirmada', ?, ?, ?)");
     return $stmt->execute([$fecha_ingreso, $fecha_salida, $id_cliente, $id_habitacion, $id_empleado]);
 }
 
 // Registrar nuevo cliente
 function registrar_cliente($pdo, $nombre, $nit, $fecha_nacimiento, $telefono) {
     $stmt = $pdo->prepare("INSERT INTO cliente (nombre, NIT, fecha_nacimiento, telefono)
-                           VALUES (?, ?, ?, ?)");
+                        VALUES (?, ?, ?, ?)");
     $stmt->execute([$nombre, $nit, $fecha_nacimiento, $telefono]);
     return $pdo->lastInsertId(); // devuelve el ID del cliente insertado
 }
@@ -99,10 +99,10 @@ function registrar_cliente($pdo, $nombre, $nit, $fecha_nacimiento, $telefono) {
 // para btener información de una reserva por ID
 function obtener_reserva_por_id($pdo, $id_reserva) {
     $stmt = $pdo->prepare("SELECT r.*, c.nombre AS cliente_nombre, h.numero_habitacion, h.tipo
-                           FROM reserva r
-                           JOIN cliente c ON r.id_cliente = c.id_cliente
-                           JOIN habitacion h ON r.id_habitacion = h.id_habitacion
-                           WHERE r.id_reserva = ?");
+                        FROM reserva r
+                        JOIN cliente c ON r.id_cliente = c.id_cliente
+                        JOIN habitacion h ON r.id_habitacion = h.id_habitacion
+                        WHERE r.id_reserva = ?");
     $stmt->execute([$id_reserva]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }

@@ -1,3 +1,5 @@
+/* sitio_blanco/estilos.css */
+
 body {
     font-size: 1.1rem;
     color: #333;
@@ -16,6 +18,8 @@ h1, h2 {
     font-size: 1.1rem;
     padding: 0.75rem;
     border: 2px solid #ccc;
+    background-color: #fff;
+    color: #333;
 }
 
 .form-label {
@@ -30,6 +34,7 @@ h1, h2 {
     background-color: #fff;
     border: 2px solid #ccc;
     border-radius: 0.25rem;
+    color: #333;
 }
 
 .btn-primary {
@@ -51,6 +56,8 @@ h1, h2 {
 .card {
     border: 2px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #333;
 }
 
 .hero {
@@ -85,16 +92,20 @@ h1, h2 {
     .hero, .room-preview {
         height: 200px;
     }
+
     .card-custom {
         margin-top: -100px;
     }
+
     .confirmation-card {
         min-height: 200px;
     }
+
     .date-input {
         font-size: 1rem;
         padding: 0.5rem;
     }
+
     .btn-primary {
         font-size: 1rem;
         padding: 0.5rem;
